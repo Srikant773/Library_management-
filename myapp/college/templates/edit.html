@@ -1,0 +1,14 @@
+<form action="update" method='post'>
+    Student Name:<input type= "text" name="student_name" vlaue='{{sname.student_name}}'><br>
+    Regd.No:<input type= "text" name="regd_no" vlaue='{{sname.regd_no}}'><br>
+    Email:<input type= "text" name="email" vlaue='{{sname.email}}'><br>
+    Branch:<input type= "text" name="branch" vlaue='{{sname.branch}}'><br>
+    year:<input type= "text" name="year" vlaue='{{sname.year}}'><br>
+    Section:<input type= "text" name="section" vlaue='{{sname.section}}'><br>
+   Mobile :<input type= "text" name="mobile" vlaue='{{sname.mobile}}'><br>
+    Address:<input type= "text" name="address" vlaue='{{sname.address}}'><br>
+    Password:<input type= "text" name="password" vlaue='{{sname.password}}'><br>
+    <input type="submit"value='update' name='btn'></br>
+    <button class="btn1">  <a href='ahome' > Back</a></button>
+    {% csrf_token %}
+</form>

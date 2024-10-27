@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px; /* Adjust sidebar width as needed */
+    background-color: #ce6f6f;
+    padding: 20px;
+    {% comment %} height: 100%; {% endcomment %}
+    border-right: 1px solid #e9e50c;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    color: rgb(156, 233, 57)b1b;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    /* background-color: wheat; */
+}
+
+.sidebar a {
+
+    text-decoration: none;
+    color: #fa0606;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    background: yellow;
+    font-weight: bold;
+    
+}
+
+.sidebar a:hover {
+    background-color: #e0e0e0;
+    color: #d11717;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+} 
+.book{
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:200px;
+    padding-right:200px;
+    box-sizing:border;
+    border:2px solid red;
+    font-weight:bold;
+    font-size:20px;
+    {% comment %} height:300px; {% endcomment %}
+    width:50%;
+    line-height:50px;
+    
+}
+</style>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="ahome">Home</a></li>
+                <li><a href="addbook">AddBook</a></li>
+                <li><a href="bookissuse">Book issue</a></li>
+                <li><a href='issuedetail'>Show Book issue </a><li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Show Issue Book Details:</h1>
+            <table width='70%'   border='2px'cellspacing='2px'/ >
+        <thead>
+            <tr>
+                <th style='border:3px solid aqua'>sl.no</th>
+                <th style='border:3px solid aqua'>Book Name</th>
+                <th style='border:3px solid aqua'>Regd_No</th>
+                <th style='border:3px solid aqua'>Date</th>
+                                
+            </tr>
+        </thead>
+        <tbody>
+    <form method="post">
+            {%for book in show %}
+         
+                {%csrf_token%}
+            <tr >
+                <td >{{book.id}}</td>
+                <td>{{book.book_name}}</td>
+                <td>{{book.regd_no}}</td>
+                <td>{{book.date|date:"Y M d"}}</td>
+                {% comment %} <td> <input type="text" name="regd_no" value="{{book.regd_no}}" hidden> {% endcomment %}
+                   
+            </tr>
+     
+        {%endfor%}
+        </tbody>
+    </table>
+</form>
+         
+            
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

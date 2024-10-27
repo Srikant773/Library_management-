@@ -1,0 +1,121 @@
+   {% extends "base.html" %}
+   {%block content%}
+   <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Library</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    
+    .container {
+        display: flex;
+        min-height: 100vh;
+    }
+    
+    .sidebar {
+        width: 250px; /* Adjust sidebar width as needed */
+        background-color: #ce6f6f;
+        padding: 20px;
+        {% comment %} height: 100%; {% endcomment %}
+        border-right: 1px solid #e9e50c;
+    }
+    
+    .sidebar h2 {
+        margin-bottom: 20px;
+        color: rgb(156, 233, 57)b1b;
+    }
+    
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .sidebar li {
+        margin-bottom: 10px;
+        /* background-color: wheat; */
+    }
+    
+    .sidebar a {
+    
+        text-decoration: none;
+        color: #fa0606;
+        padding: 10px;
+        display: block;
+        border-radius: 5px;
+        background: yellow;
+        font-weight: bold;
+        
+    }
+    
+    .sidebar a:hover {
+        background-color: #e0e0e0;
+        color: #d11717;
+    }
+    
+    .main-content {
+        flex: 1;
+        padding: 40px;
+    } 
+    .book{
+        padding-top:20px;
+        padding-bottom:20px;
+        padding-left:200px;
+        padding-right:200px;
+        box-sizing:border;
+        border:2px solid red;
+        font-weight:bold;
+        font-size:20px;
+        {% comment %} height:300px; {% endcomment %}
+        line-height:50px;
+        width:50%;
+        
+    }
+    
+    </style>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Admin</h2>
+                <ul>
+                    <li><a href="ahome">Home</a></li>
+                    <li><a href="addbook">AddBook</a></li>
+                    <li><a href="bookissuse">Book issue</a></li>
+                    <li><a href='issuedetail'>Show Book issue </a><li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h1>Book issue Here:</h1>
+               <div class='book'>
+                <form method='post' >
+                    {% csrf_token %}
+                        Book_name<select name='book_name' >
+                            <option >----select----</option>
+                            {%for book in data %}
+                            <option value="{{book.book_name}}">{{book.book_name}}</option>
+                            {%endfor%}
+                        </select><br>
+                
+                         Student_Regd_no<select name='regd_no'>
+                            <option>----select----</option>
+                            {%for student in data2 %}
+                            <option value="{{student.regd_no}}">{{student.regd_no}}</option>
+                            {%endfor%}
+                        </select></br>
+                        Date:<input type='date' id='date' name='date'></br>
+                        <input type='submit' value='Submit'>
+                        <input type='reset' value='Reset'/>
+                    </form> 
+                    {{data9}}
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    {%endblock%}

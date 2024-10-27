@@ -1,0 +1,16 @@
+Requirements
+-------------
+install python 3.12.2 version
+pip install Django 5.0.6
+pip install pillow 10.4.0
+-------------------------
+
+------------------to run-------------------
+python manage.py createsuperuser
+python manage.py makemigrations
+    
+python manage.py migrate
+
+python manage.py runserver
+------------------------------------------
+admin-- demo@gmail.com, password--123

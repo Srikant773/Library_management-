@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px; /* Adjust sidebar width as needed */
+    background-color: #ce6f6f;
+    padding: 20px;
+    {% comment %} height: 100%; {% endcomment %}
+    border-right: 1px solid #e9e50c;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    color: rgb(156, 233, 57)b1b;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    /* background-color: wheat; */
+}
+
+.sidebar a {
+
+    text-decoration: none;
+    color: #fa0606;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    background: yellow;
+    font-weight: bold;
+    
+}
+
+.sidebar a:hover {
+    background-color: #e0e0e0;
+    color: #d11717;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+} 
+
+</style>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="ahome">Home</a></li>
+                <li><a href="addbook">Add Book</a></li>
+                <li><a href="bookissuse">Book Issue</a></li>
+                <li><a href='issuedetail'>Show Book issue </a><li>
+            </ul>
+        </div>
+        <div class="main-content">
+            
+<div class='student'>
+    <table width='90%' border='1px' cellspacing='1px'>
+    
+       <caption style='font-weight:bold;font-size:30px'> Student Details</caption>
+          <style>
+            table {
+                border-collapse: collapse;
+                line-height:40px;
+               
+            }
+    
+            th, td {
+                border: 1px solid #ddd;
+                padding: px;
+                text-align: left;
+            }
+    
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
+            <tr>
+              <th>sl.no</th>
+              <th>Student Name</th>
+               <th>Regd.No</th>
+               <th>Branch</th>
+               <th>Year</th>
+               <th>section</th>
+               <th>mobile</th>
+               <th>email</th>
+               <th>password</th>
+               <th>Address</th>
+               <th>Action</th>
+            </tr>
+            <tbody>
+              {% for student in data3 %}
+              <form method='post'>
+                {%csrf_token%}
+              <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.student_name}}</td>
+                <td>{{student.regd_no}}</td>
+                <td>{{student.branch}}</td>
+                <td>{{student.year}}</td>
+                <td>{{student.section}}</td>
+                <td>{{student.mobile}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.password}}</td>
+                <td>{{student.address}}</td>
+                <td><input type="text" name="regd_no" value="{{student.regd_no}}" hidden >
+          
+                    <input type='submit' name='btn'value="Delete">
+                    <input type='submit' name='btn'value="edit"></td>
+              
+              </tr>
+            </form>
+              {% endfor %}
+          
+            </tbody>
+      
+        </table>
+
+    </div>
+    <div class='book'>
+    <table width='50%'  cellspacing='1px'/>
+        <caption style='font-weight:bold;font-size:30px' > Book details</caption>
+        <thead>
+            <tr>
+                <th style='border:3px solid aqua'>sl.no</th>
+                <th style='border:3px solid aqua'>Book Name</th>
+                <th style='border:3px solid aqua'>Book No.</th>
+                <th style='border:3px solid aqua'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            {%for book in data4 %}
+         
+             <form method="post">
+                {%csrf_token%}   
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.book_name}}</td>
+                <td>{{book.book_no}}</td>
+                
+                <td> <input type="text" name="book_no" value="{{book.book_no}}" hidden>
+          
+                     <input type='submit' name='btn'value="delete"></td>
+    
+            </tr>
+        </form>
+        {%endfor%}
+       
+        </tbody>
+    </table>
+    </div>
+    
+
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+{%endblock%}
